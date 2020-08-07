@@ -11,7 +11,7 @@ but I had quite a lot of fun implementing this.
 
 ## What is Unification?
 There are different types of Unification. This program performs Syntactic Unification i.e. it will
-unify the expressions as they are, without deriving any any logical inferences.  
+unify the expressions as they are, without deriving any logical inferences.  
 Take the last example (`p(a, X) = p(Y, b)`). Here, `X` and `Y` are variables (since they begin with
 a capital letter). The unifier asks "Are there any values for `X` and `Y` which, if substituted, will
 make both sides of the equation equal?".  
@@ -42,10 +42,10 @@ The job of the Lexer is to take an expression in string form and produce a token
 For example, the expression `f(X)` produces the following stream :-
 ```
 [
-	(type: 'ident', val: 'f'),
-	(type: 'l_paren', val: '('),
-	(type: 'var', val: 'X'),
-	(type: 'r_paren', val: ')')
+  (type: 'ident', val: 'f'),
+  (type: 'l_paren', val: '('),
+  (type: 'var', val: 'X'),
+  (type: 'r_paren', val: ')')
 ]
 ```
 
@@ -54,23 +54,23 @@ The parser takes in the token stream and parses it into Variable Nodes, Constant
 Nodes. For example, the expression `pred(X, hello, pred2(world))` will get parsed to the following :-
 ```
 Predicate {
-	name: 'pred',
-	nodes: [
-		Variable {
-			name: 'X'
-		},
-		Constant {
-			name: 'hello'
-		},
-		Predicate {
-			name: 'pred2',
-			nodes: [
-				Constant {
-					name: 'world'
-				}
-			]
-		}
-	]
+  name: 'pred',
+  nodes: [
+    Variable {
+      name: 'X'
+    },
+    Constant {
+      name: 'hello'
+    },
+    Predicate {
+      name: 'pred2',
+      nodes: [
+        Constant {
+          name: 'world'
+        }
+      ]
+    }
+  ]
 }
 ```
 The Lexer-Parser chain gives us the inputted expression in a very convenient class format, making 
